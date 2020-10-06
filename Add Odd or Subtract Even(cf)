@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+#include<algorithm>
+#include<vector>
+#define mod 1000000007
+#define pb push_back
+#define mp make_pair
+#define all(a) a.begin(),a.end()
+typedef long long int ll;
+typedef unsigned long long int ull;
+
+using namespace std;
+const int N=1e5+1;
+
+// vector <vector<int>> adj(N);
+// vector <bool> visited(N);
+// vector <int> dis(N);
+
+void solve()
+{
+    ll a,b,ans=0;
+    cin>>a>>b;
+    if(a==b)
+    {
+        cout<<"0\n";
+        return;
+    }
+
+    if(b>=a)
+    {
+        ll diff=b-a;
+        if(diff&1)
+            cout<<"1\n";
+        else
+            cout<<"2\n";
+    }
+
+    else
+    {
+        ll diff=a-b;
+        if(diff&1)
+            cout<<"2\n";
+        else
+            cout<<"1\n";
+    }
+}
+ 
+int main()
+{
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
+    #endif
+
+    ios::sync_with_stdio(0);   
+    cin.tie(0);
+
+    int t=1;
+    cin>>t;
+
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+        
+}
+    
