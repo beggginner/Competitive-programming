@@ -1,0 +1,84 @@
+#include<bits/stdc++.h>
+#include<algorithm>
+#include<vector>
+#define mod 1000000007
+#define pb push_back
+#define mp make_pair
+#define all(a) a.begin(),a.end()
+typedef long long int ll;
+typedef unsigned long long int ull;
+
+using namespace std;
+const int N=1e5+1;
+
+// vector <vector<int>> adj(N);
+// vector <bool> visited(N);
+
+void solve()
+{
+    int n,m;
+    cin>>n>>m;
+
+    ll a[n][26];
+
+    for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<26;j++)
+            {
+                a[i][j]=0;
+            }
+        }
+
+    string s;
+    cin>>s;
+
+    a[0][s[0]-'a']++;
+
+    for(int i=1;i<n;i++)
+    {
+        for(int j=0;j<26;j++)
+            a[i][j]=a[i-1][j];
+
+        a[i][s[i]-'a']++;
+    }
+
+    ll ans[26]={0};
+
+    int p[m];
+    for(int i=0;i<m;i++)
+        {
+            cin>>p[i];
+            for(int j=0;j<26;j++)
+            {
+                ans[j]+=a[p[i]-1][j];
+            }
+        }
+    for(int i=0;i<n;i++)
+        ans[s[i]-'a']++;
+
+    for(int j=0;j<26;j++)
+        cout<<ans[j]<<" ";
+    cout<<"\n";
+}
+ 
+int main()
+{
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
+    #endif
+
+    ios::sync_with_stdio(0);   
+    cin.tie(0);
+
+    int t=1;
+    cin>>t;
+
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+        
+}
+    
