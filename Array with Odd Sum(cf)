@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define pb push_back
+#define mp make_pair
+#define umap unordered_map
+#define uset unordered_set
+#define all(a) a.begin(),a.end()
+typedef long long int ll;
+typedef unsigned long long int ull;
+
+using namespace std;
+const int N=1e5+1;
+
+// vector <vector<pair<int,int>>> adj(N);
+// vector <bool> visited(N);
+
+void solve()
+{
+    int n,c=0;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {cin>>a[i];if(a[i]&1)c++;}
+
+    if(c==0){cout<<"NO\n";return;}
+
+    if(c&1){cout<<"YES\n";return;}
+
+    else if(n%2==0 && c==n){cout<<"NO\n";return;}
+
+    else cout<<"YES\n";
+
+       
+} 
+int main()
+{
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
+    #endif
+
+    ios::sync_with_stdio(0);   
+    cin.tie(0);
+
+    int t=1;
+    cin>>t;
+
+    while(t--)
+    {
+        solve();
+    }
+    return 0;       
+}
+    
