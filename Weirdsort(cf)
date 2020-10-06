@@ -1,0 +1,79 @@
+#include<bits/stdc++.h>
+#include<algorithm>
+#include<vector>
+#define mod 1000000007
+#define pb push_back
+#define mp make_pair
+#define all(a) a.begin(),a.end()
+typedef long long int ll;
+typedef unsigned long long int ull;
+
+using namespace std;
+const int N=1e5+1;
+
+// vector <vector<int>> adj(N);
+// vector <bool> visited(N);
+
+void solve()
+{
+    int n,m,c=0;
+    cin>>n>>m;
+
+    vector <int> a(n+1),b(n+1);
+    vector <bool> index(n+1,0);
+    int x;
+    a[0]=-1;b[0]=-1;
+
+    for(int i=1;i<=n;i++)
+            cin>>a[i];
+
+    for(int i=0;i<m;i++)
+        {
+            cin>>x;
+            index[x]=1;
+        }
+
+    bool check=1;
+    while(check)
+    {
+        check=0;
+        for(int i=1;i<=n-1;i++)
+        {
+            if(a[i]>a[i+1] && index[i])
+                {
+                    swap(a[i],a[i+1]);
+                    check=1;
+                }
+        }
+    }
+    
+    b=a;
+    sort(all(b));
+
+    if(a==b)
+        cout<<"YES\n";
+    else
+        cout<<"NO\n";
+}
+ 
+int main()
+{
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
+    #endif
+
+    ios::sync_with_stdio(0);   
+    cin.tie(0);
+
+    int t=1;
+    cin>>t;
+
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+        
+}
+    
