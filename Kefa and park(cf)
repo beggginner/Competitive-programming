@@ -1,0 +1,95 @@
+#include<bits/stdc++.h>
+#include<algorithm>
+#include<vector>
+#define mod 1000000007
+#define pb push_back
+#define mp make_pair
+#define all(a) a.begin(),a.end()
+typedef long long int ll;
+typedef unsigned long long int ull;
+
+using namespace std;
+const int N=1e5+1;
+
+int ans,m;
+vector <vector<int>> adj(N);
+vector <bool> visited(N);
+vector <int> value(N);
+vector <int> maxvalue(N);
+int a[N];
+
+void dfs(int u)
+{
+    visited[u]=1;
+
+    for(int p:adj[u])
+       {        
+         if(!visited[p])
+                {
+                    if(a[p]==1)
+                        value[p]=value[u]+1;
+
+                    else
+                        value[p]=0;
+
+                    maxvalue[p]=max(maxvalue[u],value[p]);
+
+                    if(adj[p].size()==1 && p!=1 && maxvalue[p]<=m)
+                        ans++;
+                    dfs(p);
+                }
+       }
+}
+
+void solve()
+{
+    int n;
+    cin>>n>>m;
+
+    for(int i=1;i<=n;i++)
+        {cin>>a[i];visited[i]=0;}
+
+    for(int i=1;i<=n-1;i++)
+    {
+        int x,y;
+        cin>>x>>y;
+        adj[x].pb(y);
+        adj[y].pb(x);
+    } 
+
+    if(a[1]==1)
+        value[1]=1;
+    else
+        value[1]=0;
+
+    maxvalue[1]=value[1];
+
+    dfs(1);
+
+    // for(int i=1;i<=n;i++)
+    //     cout<<maxvalue[i]<<" ";cout<<"\n";
+
+    cout<<ans<<"\n";
+}
+ 
+int main()
+{
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt","r",stdin);
+    freopen("output.txt","w",stdout);
+    #endif
+
+    ios::sync_with_stdio(0);   
+    cin.tie(0);
+
+    int t=1;
+    // cin>>t;
+
+    while(t--)
+    {
+        solve();
+    }
+
+    return 0;
+        
+}
